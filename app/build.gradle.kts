@@ -23,12 +23,19 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api.foursquare.com/v3/\"")
+            buildConfigField("String", "API_KEY", "\"fsq3msDt/0r6Hk8ApdyBu6lNk9s3fLA3A025A+mGkVYjxzo=\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField("String", "BASE_URL", "\"https://api.foursquare.com/v3/\"")
+            buildConfigField("String", "API_KEY", "\"fsq3msDt/0r6Hk8ApdyBu6lNk9s3fLA3A025A+mGkVYjxzo=\"")
         }
     }
     compileOptions {
