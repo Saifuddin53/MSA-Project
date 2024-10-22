@@ -23,7 +23,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -34,8 +33,9 @@ import com.myprojects.msa_project.domain.Shop
 import com.myprojects.msa_project.ui.theme.Typography
 
 @Composable
-fun DetailScreenFoodItem(
-    shopItem: Shop
+fun ShopListItem(
+    shop: Shop,
+    modifier: Modifier = Modifier
 ) {
     Card(
         modifier = Modifier
@@ -61,7 +61,7 @@ fun DetailScreenFoodItem(
                     verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
                     Text(
-                        text = shopItem.name,
+                        text = shop.name,
                         style = Typography.bodyLarge.copy(
                             fontWeight = FontWeight(600),
                             fontSize = 14.sp,
@@ -106,7 +106,7 @@ fun DetailScreenFoodItem(
                             tint = Color(0xff595959),
                         )
                         Text(
-                            text = shopItem.address,
+                            text = shop.address,
                             style = Typography.bodyMedium.copy(
                                 color = Color(0xff595959),
                                 fontSize = 10.sp,
@@ -131,7 +131,7 @@ fun DetailScreenFoodItem(
                     shape = RoundedCornerShape(10.dp),
                 ) {
                     AsyncImage(
-                        model = shopItem.imageUrl,
+                        model = shop.imageUrl,
                         contentDescription = "",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop

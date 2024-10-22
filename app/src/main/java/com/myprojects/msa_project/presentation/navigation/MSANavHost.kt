@@ -16,18 +16,20 @@ fun MSANavHost(
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route,
-        modifier = modifier
     ) {
         composable(route = Screen.Home.route) {
             HomeScreen(
                 onCategoryClick = {
                     navController.navigate(Screen.ShopList.route)
-                }
+                },
+                modifier = modifier
             )
         }
 
         composable(route = Screen.ShopList.route) {
-            ShopListScreen()
+            ShopListScreen(
+                modifier = modifier
+            )
         }
     }
 }

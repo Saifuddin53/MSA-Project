@@ -29,7 +29,7 @@ class RemoteShopDataSource(
             httpClient.get(
                 urlString = constructUrl("/places/nearby")
             ) {
-                header("Authorization", "Bearer ${BuildConfig.API_KEY}")
+                header("Authorization", BuildConfig.API_KEY)
 
                 // Add query parameters dynamically
                 parameter("ll", "$latitude,$longitude")
