@@ -5,6 +5,11 @@ import com.myprojects.msa_project.domain.util.Result
 
 interface ShopDataSource {
 
-    suspend fun getNearbyShops(): Result<List<Shop>, NetworkError>
+    suspend fun getNearbyShops(
+        latitude: Double,
+        longitude: Double,
+        items: String,
+        range: String
+    ): Result<List<Shop>, NetworkError>
 
 }

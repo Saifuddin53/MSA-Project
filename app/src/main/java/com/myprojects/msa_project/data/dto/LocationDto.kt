@@ -1,8 +1,9 @@
 package com.myprojects.msa_project.data.dto
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class LocationDto(
-    val formatted_address: String
+    @SerialName("formatted_address") val formattedAddress: String
 )
