@@ -5,5 +5,6 @@ data class Shop(
     val name: String,
     val imageUrl: String,
     val distance: Double,
-    val closedBucket: String
+    val closedBucket: String,
+    val address: String
 )
