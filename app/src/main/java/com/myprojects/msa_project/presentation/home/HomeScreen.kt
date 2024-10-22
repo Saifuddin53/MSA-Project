@@ -33,12 +33,13 @@ import kotlin.math.max
 @Composable
 fun HomeScreen(
     gradient: List<Color> = listOf(Shadow2, Ocean3, Shadow4),
-    onCategoryClick: () -> Unit = {},
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onCategoryClick: () -> Unit = {}
 ) {
     Box(
         modifier = modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(Color.White),
         contentAlignment = Alignment.Center
     ) {
         Row(

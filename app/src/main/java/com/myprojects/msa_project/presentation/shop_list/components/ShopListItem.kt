@@ -1,5 +1,6 @@
 package com.myprojects.msa_project.presentation.shop_list.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -27,7 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.compose.AsyncImage
+import coil.compose.AsyncImage
 import com.myprojects.msa_project.R
 import com.myprojects.msa_project.domain.Shop
 import com.myprojects.msa_project.ui.theme.Typography
@@ -69,111 +70,26 @@ fun ShopListItem(
                             color = Color.Black
                         ),
                     )
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Text(
-                            text = "4.5",
-                            style = Typography.bodyMedium.copy(
-                                fontSize = 9.sp,
-                                fontWeight = FontWeight(500),
-                                color = Color.White,
-                            ),
-                            modifier = Modifier
-                                .padding(top = 2.dp, end = 6.dp)
-                                .background(
-                                    color = Color(0xff339D3A),
-                                    shape = RoundedCornerShape(4.dp)
-                                )
-                                .padding(horizontal = 5.dp, vertical = 2.dp)
-                        )
-
-                        Text(
-                            text = "500 Rating",
-                            style = Typography.bodyMedium.copy(
-                                fontWeight = FontWeight(500),
-                                color = Color(0xff595959),
-                                fontSize = 10.sp
-                            ),
-                            modifier = Modifier.align(Alignment.Bottom)
-                        )
-                    }
-                    Row {
-                        Icon(
-                            painter = painterResource(id = R.drawable.distance),
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp),
-                            tint = Color(0xff595959),
-                        )
-                        Text(
-                            text = shop.address,
-                            style = Typography.bodyMedium.copy(
-                                color = Color(0xff595959),
-                                fontSize = 10.sp,
-                                lineHeight = 14.sp
-                            ),
-                            modifier = Modifier.padding(horizontal = 10.dp) // Adjust padding if needed
-                        )
-                    }
-                }
-                Card(
-                    modifier = Modifier
-                        .height(70.dp)
-                        .padding(end = 8.dp, bottom = 6.dp)
-                        .clickable { /* TODO */ }
-                        .weight(0.24f),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color(0xFFffffff),
-                        contentColor = Color.Black,
-                        disabledContainerColor = Color.Gray,
-                        disabledContentColor = Color.White
-                    ),
-                    shape = RoundedCornerShape(10.dp),
-                ) {
-                    AsyncImage(
-                        model = shop.imageUrl,
-                        contentDescription = "",
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop
+                    IconWithText(
+                        icon = R.drawable.distance,
+                        text = "${shop.distance}m",
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                    IconWithText(
+                        icon = R.drawable.location,
+                        text = shop.address,
+                        modifier = Modifier.padding(top = 4.dp)
                     )
                 }
+                IconWithText(
+                    icon = R.drawable.clock,
+                    text = shop.closedBucket
+                )
             }
-            Row(
+            OrderButton(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 12.dp, top = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Box(
-                    modifier = Modifier
-                        .border(1.dp, Color(0xff797979), shape = RoundedCornerShape(24.dp))
-                        .clickable {
-                            // TODO : HANDLE NAVIGATION TO DIRECTION SCREEN
-                        }
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .padding(8.dp),
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.order_food),
-                            contentDescription = "",
-                            modifier = Modifier.size(16.dp)
-                        )
-
-                        Text(
-                            text = "Order",
-                            style = Typography.bodyMedium.copy(
-                                fontWeight = FontWeight(500),
-                                color = Color.Black,
-                                fontSize = 10.sp
-                            ),
-                        )
-                    }
-                }
-            }
+            )
         }
     }
 }

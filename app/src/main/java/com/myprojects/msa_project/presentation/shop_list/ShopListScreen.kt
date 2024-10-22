@@ -1,9 +1,12 @@
 package com.myprojects.msa_project.presentation.shop_list
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
@@ -12,38 +15,48 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.myprojects.msa_project.presentation.shop_list.components.ShopListContainer
+import com.myprojects.msa_project.presentation.shop_list.components.ShopListTopSection
 import com.myprojects.msa_project.presentation.shop_list.components.ShopListItem
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ShopListScreen(
     viewModel: ShopListViewModel = koinViewModel(),
-    modifier: Modifier
+    modifier: Modifier,
+    onBackClick: () -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     if(state.isLoading) {
         Box(
             modifier = modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .background(Color.White),
             contentAlignment = Alignment.Center
         ) {
             CircularProgressIndicator()
         }
     } else {
-        LazyColumn(
-            modifier = modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White)
         ) {
-            items(state.shops) { shop ->
-                ShopListItem(
-                    shop = shop,
-                    modifier = Modifier.fillMaxWidth()
+            Column(
+                modifier = Modifier
+            ) {
+                ShopListTopSection() {
+                    onBackClick()
+                }
+                ShopListContainer(
+                    shopList = state.shops,
+                    modifier = Modifier
+                        .padding(16.dp)
                 )
-                HorizontalDivider()
             }
         }
     }

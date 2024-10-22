@@ -29,7 +29,9 @@ fun MSANavHost(
         composable(route = Screen.ShopList.route) {
             ShopListScreen(
                 modifier = modifier
-            )
+            ) {
+                navController.navigateUp()
+            }
         }
     }
 }

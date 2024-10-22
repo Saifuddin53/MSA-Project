@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ShopDto(
     @SerialName("fsq_id") val id: String,
-    val categories: List<CategoryDto>,
     @SerialName("closed_bucket") val closedBucket: String,
     val distance: Int,
     val location: LocationDto,
