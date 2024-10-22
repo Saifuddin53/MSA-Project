@@ -75,6 +75,12 @@ dependencies {
 
     implementation(libs.bundles.ktor)
 
+    implementation(libs.coil.compose)
+
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
     testImplementation(libs.junit)
 
 
