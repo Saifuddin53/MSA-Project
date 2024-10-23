@@ -1,5 +1,3 @@
-Here's the updated README file that includes a section about the Foursquare API and mentions a video recording:
-
 ---
 
 # 📱 **MSA Android challenge**
