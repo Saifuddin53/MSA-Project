@@ -19,7 +19,7 @@ fun MSANavHost(
     ) {
         composable(route = Screen.Home.route) {
             HomeScreen(
-                onCategoryClick = {
+                onSearchClick = {
                     navController.navigate(Screen.ShopList.route)
                 },
                 modifier = modifier

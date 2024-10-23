@@ -31,27 +31,28 @@ fun ShopListScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    if(state.isLoading) {
-        Box(
-            modifier = modifier
-                .fillMaxSize()
-                .background(Color.White),
-            contentAlignment = Alignment.Center
-        ) {
-            CircularProgressIndicator()
-        }
-    } else {
-        Box(
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
+        Column(
             modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White)
         ) {
-            Column(
-                modifier = Modifier
-            ) {
-                ShopListTopSection() {
-                    onBackClick()
+            ShopListTopSection() {
+                onBackClick()
+            }
+            if(state.isLoading) {
+                Box(
+                    modifier = modifier
+                        .weight(1f)
+                        .background(Color.White)
+                        .align(Alignment.CenterHorizontally),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
                 }
+            } else {
                 ShopListContainer(
                     shopList = state.shops,
                     modifier = Modifier

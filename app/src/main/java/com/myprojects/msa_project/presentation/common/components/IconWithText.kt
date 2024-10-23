@@ -1,4 +1,4 @@
-package com.myprojects.msa_project.presentation.shop_list.components
+package com.myprojects.msa_project.presentation.common.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.myprojects.msa_project.ui.theme.Typography
 
 @Composable
