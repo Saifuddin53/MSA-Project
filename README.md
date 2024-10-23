@@ -95,7 +95,7 @@ Here are the key dependencies used in this project:
 
 ## 🎥 **Video Recording**
 
-A video demonstration of the app’s features and functionality is available [here](#). This recording showcases how users can search for nearby shops and the overall user experience.
+This recording showcases how users can search for nearby shops and the overall user experience.
 
 https://github.com/user-attachments/assets/bdf2e08b-e42b-42a0-881d-2f73dd6b66e6
 
