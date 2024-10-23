@@ -20,15 +20,16 @@ The Nearby Places API allows users to search for venues near a specific location
 The project follows **Clean Architecture**, which ensures a clear separation of concerns and makes the app easy to maintain and scale. Here is a brief overview of each layer:
 
 1. **Domain Layer**:
-   - **Entities**: Represents core business models, independent of any specific implementation details.
-   - **Use Cases**: Encapsulate application-specific business rules by interacting with repositories.
+   - **Entities**: Represents core UI models, independent of any specific implementation frameworks or libraries.
+   - **Shop Data Source**: Encapsulate application-specific business rules by interacting with the dependent functions.
 
 2. **Data Layer**:
-   - **Repositories**: Bridge the gap between the domain layer and data sources (API or local database).
+   - **Remote Data source**: Bridge the gap between the domain layer and data sources (API) implementation of our shop data source.
+   - **DTO**: Used for mapping models for mapping and transferring data between layers, particularly from our UI layer.
    - **Network**: Manages network operations via **Ktor**, communicating with the backend API.
 
 3. **Presentation Layer**:
-   - **ViewModels**: Manage the state of the UI, calling use cases and processing the results.
+   - **ViewModels**: Manage the state of the UI, calling data source functions and processing the results.
    - **UI Components**: Built using **Jetpack Compose** for a modern, declarative UI approach.
      
 4. **DI**:
@@ -39,7 +40,6 @@ The project follows **Clean Architecture**, which ensures a clear separation of 
 - **Jetpack Compose**: Modern UI toolkit for Android.
 - **Ktor**: HTTP client used for API calls.
 - **Koin**: Simple dependency injection library for Kotlin and Jetpack Compose.
-- **Room**: Persistence library for local storage.
 - **StateFlow & Coroutines**: For managing asynchronous data flows and state updates.
 
 ---
@@ -92,6 +92,8 @@ shopDataSource
    _state.update { it.copy(isLoading = false) }
    _events.send(ShopListEvent.Error(error))
 }
+```
+-- For simplicity of the app I have hard coded the parameters
 
 ---
 
