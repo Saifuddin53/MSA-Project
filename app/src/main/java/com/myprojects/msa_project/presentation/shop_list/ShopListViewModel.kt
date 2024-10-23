@@ -5,9 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.myprojects.msa_project.domain.ShopDataSource
 import com.myprojects.msa_project.domain.util.onError
 import com.myprojects.msa_project.domain.util.onSuccess
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -24,6 +26,9 @@ class ShopListViewModel(
             SharingStarted.WhileSubscribed(5000L),
             ShopListState()
         )
+
+    private val _events = Channel<ShopListEvent>()
+    val events = _events.receiveAsFlow()
 
     private fun loadShops() {
         viewModelScope.launch {
@@ -50,6 +55,7 @@ class ShopListViewModel(
                 }
                 .onError { error ->
                     _state.update { it.copy(isLoading = false) }
+                    _events.send(ShopListEvent.Error(error))
                 }
         }
     }

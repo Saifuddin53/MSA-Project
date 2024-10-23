@@ -1,5 +1,6 @@
 package com.myprojects.msa_project.presentation.shop_list
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,11 +17,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.myprojects.msa_project.presentation.shop_list.components.ShopListContainer
 import com.myprojects.msa_project.presentation.shop_list.components.ShopListTopSection
 import com.myprojects.msa_project.presentation.shop_list.components.ShopListItem
+import com.myprojects.msa_project.presentation.util.ObserveAsEvents
+import com.myprojects.msa_project.presentation.util.toString
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -30,6 +34,19 @@ fun ShopListScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val context = LocalContext.current
+
+    ObserveAsEvents(events = viewModel.events) { event ->
+        when(event) {
+            is ShopListEvent.Error -> {
+                Toast.makeText(
+                    context,
+                    event.error.toString(context),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
 
     Box(
         modifier = Modifier

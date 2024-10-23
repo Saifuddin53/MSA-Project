@@ -31,7 +31,7 @@ fun TypingText(
     Text(
         text = visibleText,
         modifier = modifier,
-        style = Typography.titleMedium,
+        style = Typography.headlineMedium,
         color = Color.Black
     )
 }

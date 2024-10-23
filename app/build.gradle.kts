@@ -25,7 +25,7 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.foursquare.com/v3/\"")
-            buildConfigField("String", "API_KEY", "\"fsq3msDt/0r6Hk8ApdyBu6lNk9s3fLA3A025A+mGkVYjxzo=\"")
+            buildConfigField("String", "API_KEY", "${project.properties["API_KEY"]}")
         }
         release {
             isMinifyEnabled = false
@@ -35,7 +35,7 @@ android {
             )
 
             buildConfigField("String", "BASE_URL", "\"https://api.foursquare.com/v3/\"")
-            buildConfigField("String", "API_KEY", "\"fsq3msDt/0r6Hk8ApdyBu6lNk9s3fLA3A025A+mGkVYjxzo=\"")
+            buildConfigField("String", "API_KEY", "${project.properties["API_KEY"]}")
         }
     }
     compileOptions {
