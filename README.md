@@ -1,21 +1,21 @@
 ---
 
-# 📱 **MSA Android challenge**
+# **MSA Android challenge**
 
 This Android application is designed to help users locate nearby shops at a hackathon based on specific search queries like pizza, juice, and more. The app is built using **Kotlin** and **Jetpack Compose**, with a focus on **Clean Architecture**. It utilizes **Koin** for dependency injection, **Ktor** for networking.
 
 ---
 
-## 🌐 **Foursquare API**
+## **Foursquare API**
 
-The application utilizes the **Foursquare API**, specifically the **Nearby Places API**. Foursquare provides a comprehensive location platform that enables developers to access a wide range of venue data, including categories, locations, tips, and photos. 
+The application utilizes the **Foursquare API**, specifically the **Nearby Places API**. Foursquare provides a comprehensive location platform that enables developers to access a wide range of venue data, including categories, locations, tips, etc.
 
 ### **Nearby Places API**
-The Nearby Places API allows users to search for venues near a specific location. By providing latitude and longitude coordinates, along with search queries, the API returns a list of relevant places, including their names, categories, distances, and more. This feature is essential for the Shop Finder App, as it enables users to discover shops in their vicinity based on their interests.
+The Nearby Places API allows users to search for venues near a specific location. By providing latitude and longitude coordinates, along with search queries, the API returns a list of relevant places, including their names, categories, distances, and more. This feature is essential for our App, as it enables users to discover shops in their vicinity based on their interests.
 
 ---
 
-## 🛠 **Architecture Overview**
+## **Architecture Overview**
 
 The project follows **Clean Architecture**, which ensures a clear separation of concerns and makes the app easy to maintain and scale. Here is a brief overview of each layer:
 
@@ -44,7 +44,7 @@ The project follows **Clean Architecture**, which ensures a clear separation of 
 
 ---
 
-## 📚 **Features**:
+## **Features**:
 - **Nearby Shops Search**: Users can search for shops near their location by entering queries (e.g., "pizza", "juice").
 - **Clean Architecture**: Follows Clean Architecture principles for separation of concerns and scalability.
 - **Declarative UI**: Built entirely with Jetpack Compose for a modern UI experience.
@@ -53,7 +53,7 @@ The project follows **Clean Architecture**, which ensures a clear separation of 
 
 ---
 
-## 🌐 **Networking with Ktor**
+## **Networking with Ktor**
 
 For simplicity and readability, network requests are structured in a clean and minimal way using **Ktor**. Here's how API parameters are passed dynamically:
 
@@ -74,7 +74,7 @@ httpClient.get(
 
 ---
 
-## 📦 **Dependencies**
+## **Dependencies**
 
 Here are the key dependencies used in this project:
 
@@ -93,7 +93,7 @@ Here are the key dependencies used in this project:
 
 ---
 
-## 🎥 **Video Recording**
+## **Video Recording**
 
 This recording showcases how users can search for nearby shops and the overall user experience.
 
