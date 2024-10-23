@@ -72,24 +72,26 @@ httpClient.get(
 
 - The `latitude`, `longitude`, `items` (search queries), and `range` are passed dynamically as query parameters, making the API request flexible for different searches.
 
----
-
-## **Dependencies**
-
-Here are the key dependencies used in this project:
-
-- **Jetpack Compose**: Declarative UI toolkit for building UIs in Kotlin.
-- **Ktor**: HTTP client for making API requests:
-  ```gradle
-  implementation("io.ktor:ktor-client-core:2.x.x")
-  implementation("io.ktor:ktor-client-cio:2.x.x")
-  ```
-- **Koin**: Lightweight dependency injection framework:
-  ```gradle
-  implementation("io.insert-koin:koin-android:3.x.x")
-  ```
-
----
+```kotlin
+shopDataSource
+   .getNearbyShops(
+      40.748817,
+      -73.985428,
+      pizza,juice",
+      "2000"
+   )
+   .onSuccess { shops ->
+      state.update {
+      it.copy(
+      isLoading = false,
+      shops = shops
+      )
+   }
+}
+.onError { error ->
+   _state.update { it.copy(isLoading = false) }
+   _events.send(ShopListEvent.Error(error))
+}
 
 ---
 
